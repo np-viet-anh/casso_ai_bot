@@ -1,77 +1,94 @@
-# 🧋 Casso AI Bot - Trợ Lý Ảo Tiệm Trà Sữa Tự Động Hóa Đa Kênh
+# 🧋 Casso AI Bot - Trợ Lý Ảo Tiệm Trà Sữa Tự Động Hóa (Production Ready)
 
-Kính gửi Ban Giám Khảo Casso, đây là dự án AI Agent đóng vai "Cô chủ quán Trà sữa" giao tiếp tự nhiên với khách hàng qua Telegram.
-
-Dự án có sự kết hợp hoàn hảo giữa **OpenAI (GPT-4o)** để xử lý ngôn ngữ tự nhiên, hệ thống sinh mã QR thanh toán tĩnh/động từ **PayOS / VietQR**, và lưu trữ dữ liệu thông qua **PostgreSQL (Neon.tech)**. Kèm theo đó là một trang **Web Admin Panel (Dashboard)** phục vụ cho chủ quán quản lý đơn hàng. Toàn bộ hệ thống được đóng gói theo chuẩn Production bằng **Docker**.
+Dự án này là một **AI Agent** đóng vai "Cô chủ quán" trên Telegram, tích hợp cổng thanh toán trực tuyến và hệ thống quản trị đơn hàng thời gian thực. Giải pháp được thiết kế hướng tới sự chuyên nghiệp, ổn định với khả năng triển khai tức thì trên nền tảng đám mây.
 
 ---
 
-## 🌟 Demo Phục Vụ Giám Khảo Testing
+## 🕵️ Hướng Dẫn Testing Cho Ban Giám Khảo (Trải Nghiệm 100% Tự Động)
 
-Dự án đã được deploy trọn vẹn lên server đám mây. Mời BGK trực tiếp trải nghiệm hệ thống theo đường link sau:
+Để đánh giá trọn vẹn sức mạnh của hệ thống, BGK vui lòng thực hiện chu trình kiểm thử sau:
 
-- 🤖 **Telegram Bot**: `[Chèn_Link_Bot_Của_Bạn_Vào_Đây]` *(Ví dụ: https://t.me/ten_bot)*
-- 🖥️ **Web Admin Dashboard**: `[Chèn_Link_Web_Deploy_Vào_Đây/dashboard]` *(Ví dụ: https://my-bot-casso.onrender.com/dashboard)*
+1. **Bước 1 (Giao Tiếp AI)**: Truy cập Bot Telegram @trasuadee_bot và nhắn tin gọi món bằng ngôn ngữ tự nhiên theo kịch bản:
 
-### 📝 Kịch Bản Test Khuyến Nghị
-Để trải nghiệm chu trình của một giao dịch thực tế trọn vẹn nhất, BGK vui lòng thực hiện tuần tự:
+> **Khách hàng:** Cho con gọi món
+> 
+> **Thư Ký Trà Sữa:** Chào con! 🥰 Cô rất vui khi con muốn đặt hàng tại quán trà sữa của cô! Con thích món gì nào? Cô có menu đây:
+> - Trà Sữa Trân Châu Đen (ID: TS01) - Giá M: 35,000 VND, Giá L: 45,000 VND
+> - *(... Danh sách món ...)*
+> Con hãy cho cô biết món nào, size (M hoặc L), và số lượng nhé! Cô cũng cần tên con, số điện thoại và địa chỉ nhận hàng nữa nhé! 💖
+> 
+> **Khách hàng:** cho con 2 ly đá xay matcha size M, tên là <Tên của bạn>, <Số điện thoại>, <Địa chỉ nhận hàng>
+> 
+> **Thư Ký Trà Sữa:** Cảm ơn con! 🥰 Cô đã ghi nhận đơn hàng của con... Con cho cô hỏi là đơn hàng này đã đúng chưa để cô chốt nhé? 🌟
+> 
+> **Khách hàng:** Đúng rồi ạ
+> 
+> **Thư Ký Trà Sữa:** Cảm ơn con! 🎉 Cô sẽ chốt đơn hàng của con... Con đợi cô một chút nhé, cô sẽ gửi mã QR cho con ngay bây giờ! 🥳
 
-1. **Bước 1 (Giao tiếp & Đặt món)**: Nhắn tin cho Bot Telegram bắt kỳ câu nào để gọi món (VD: *"Cho con 2 cốc trà sữa trân châu ít đường ít đá mang về địa chỉ Tòa nhà Lotte nhé"*). Quán sẽ hiểu, phản hồi tự nhiên và móc ra danh sách món để tính tiền tổng cộng.
-2. **Bước 2 (Thanh toán API)**: Bot sẽ sinh ngay tại trận một ảnh mã **VietQR** chuẩn xác kèm đường link PayOS Checkout. Bạn có thể sử dụng App Ngân hàng (hoặc tính năng thanh toán Sandbox của hệ thống nếu đang test local) để giả lập thanh toán.
-3. **Bước 3 (Nhận biến động số dư)**: Sau khi giao dịch chuyển tiền thành công, truy cập vào đường link **Web Admin Dashboard**. Hãy theo dõi hóa đơn ngay lập tức chuyển trạng thái sang **Đã Thu Tiền** (màu xanh).
-4. **Bước 4 (Vận chuyển logistics)**: Trong vai cô Chủ quán ở màn hình Dashboard, BGK hãy bấm vào nút Tên lửa **"🚀 Giao Hàng"**.
-5. **Bước 5 (Trigger Tin nhắn chăm sóc)**: Sau khi bấm nút tại Dashboard, mở ứng dụng Telegram ra, bạn sẽ thấy con Bot tự động nhắn tin thông báo *"Ting ting, cô đã làm xong trà sữa, con lấy điện thoại ra nhận đồ nhé!"*. Toàn bộ kịch bản E-Commerce được tự động hóa.
+2. **Bước 2 (Thanh Toán QR)**: Hệ thống AI lập tức sinh ra một **Ảnh mã VietQR** đính kèm đường link thanh toán PayOS trực tiếp vào Telegram:
+   > **Thư Ký Trà Sữa:** 🖼 Mã thanh toán đơn hàng đây nha. Bấm vào nút dưới hoặc link sau để thanh toán 76,000 VNĐ nhé! 👉 `https://pay.payos.vn/web/0befd98...`
+3. **Bước 3 (Giám Sát Bếp)**: Truy cập trang [Admin Dashboard](https://casso-ai-bot.onrender.com/dashboard).
+   *   Mọi đơn hàng vừa tạo sẽ xuất hiện ngay lập tức với trạng thái màu vàng **"Chờ Thanh Toán"**.
+4. **Bước 4 (Webhook Real-time)**: Khi thanh toán thành công, trang Dashboard sẽ tự động chuyển sang màu xanh **"Đã Thu Tiền"**. Đồng thời Bot sẽ phản hồi:
+   > **Thư Ký Trà Sữa:** ✅ Ting ting! Cô đã nhận được tiền hoá đơn 535283042 của con rồi nhé. Cô đang pha chế rồi, con đợi lát nhé!
+5. **Bước 5 (Giao Hàng & Phản Hồi)**: Tại Dashboard, nhấn nút **"🚀 Giao Hàng"**.
+   > **Thư Ký Trà Sữa:** 🛵 Alo con ơi! Đơn hàng #535283042 của con đã làm xong và đang được giao nhé! Cầm điện thoại ra lấy đồ uống nha!
 
 ---
 
-## 🛠 Công Nghệ Sử Dụng (Tech Stack)
+## 📂 Kiến Trúc Thư Mục (Project Structure)
 
-- **Backend**: Python 3.12, FastAPI, SQLAlchemy (ORM), Uvicorn.
-- **Frontend Dashboard**: Jinja2 Templates, TailwindCSS v3.
-- **AI Processing**: OpenAI API.
-- **Ngân Hàng Mở**: Cổng thanh toán mã nguồn mở PayOS, sinh ảnh từ `img.vietqr.io`.
-- **Hạ tầng Container**: Docker, PostgreSQL Serverless (Neon.tech), Cloud Rendering (Render).
+Dự án được tổ chức theo cấu trúc **Clean Architecture** giúp dễ dàng bảo trì và mở rộng:
 
----
-
-## 💻 Hướng Dẫn Deploy Cho Nhà Phát Triển (Tự Chạy Local)
-
-Nếu bạn muốn clone dự án này về thử nghiệm chạy máy ảo localhost:
-
-1. **Cài Đặt Thư Viện**:
-```bash
-pip install -r requirements.txt
+```text
+casso_ai_bot/
+├── app/
+│   ├── api/                # Chứa các Endpoint xử lý Request
+│   │   ├── dashboard.py    # Logic giao diện quản trị Web
+│   │   └── webhooks.py     # Xử lý tín hiệu từ Telegram & PayOS
+│   ├── core/               # Cấu hình tập trung (Env, Settings)
+│   ├── db/                 # Kết nối CSDL SQLAlchemy
+│   ├── models/             # Định nghĩa bảng dữ liệu (PostgreSQL)
+│   ├── services/           # Nghiệp vụ lõi (AI, Bot, Payment)
+│   │   ├── ai_service.py   # Phân tích ngôn ngữ tự nhiên (OpenAI)
+│   │   ├── bot_service.py  # Giao tiếp API Telegram
+│   │   └── payment_service.py # Tích hợp SDK PayOS & VietQR
+│   ├── templates/          # Giao diện Web Dashboard (HTML/Tailwind)
+│   └── main.py             # File khởi chạy ứng dụng chính
+├── Dockerfile              # Đóng gói Container sẵn sàng cho Server
+├── requirements.txt        # Danh sách thư viện phụ thuộc
+└── README.md               # Tài liệu hướng dẫn sử dụng
 ```
 
-2. **Cấu hình Biến Môi Trường (`.env`)**:
-Tạo tệp `.env` với các Keys bắt buộc sau:
-```env
-TELEGRAM_TOKEN="BOT_TOKEN_CỦA_BẠN"
-OPENAI_API_KEY="KEY_API_OPENAI"
-PAYOS_CLIENT_ID="MA_PAYOS_CLIENT_ID"
-PAYOS_API_KEY="MA_PAYOS_API_KEY"
-PAYOS_CHECKSUM_KEY="MA_PAYOS_CHECKSUM_KEY"
+---
 
-# Mặc định sử dụng SQLite cho Local Testing
-DATABASE_URL="sqlite:///./orders.db"
-```
+## 🚀 Hướng Dẫn Triển Khai (Deployment)
 
-3. **Khởi Chạy Máy Chủ**:
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-```
-Sau đó truy cập **http://localhost:8000/dashboard** để xem màn hình quản trị.
+Dự án được cấu hình tối ưu để chạy trên **Render** kết hợp với **PostgreSQL (Neon.tech)**.
+
+### 1. Cấu hình Biến Môi Trường (Environment Variables)
+Trên Render, hãy thiết lập các biến sau trong phần **Environment**:
+*   `TELEGRAM_TOKEN`: Token lấy từ @BotFather.
+*   `OPENAI_API_KEY`: API Key xử lý trí tuệ nhân tạo.
+*   `PAYOS_CLIENT_ID`, `PAYOS_API_KEY`, `PAYOS_CHECKSUM_KEY`: Thông số kết nối cổng thanh toán.
+*   `DATABASE_URL`: Link kết nối Postgres (Neon.tech). *VD: postgresql://user:pass@ep-xxx...*
+
+### 2. Triển Khai Docker
+Kết nối Repository Github với Render và chọn Runtime là **Docker**. Hệ thống sẽ tự động build image và chạy server tại cổng 8000.
+
+### 3. Thiết Lập Webhook
+Sau khi Deploy xong, hãy gán URL theo định dạng sau:
+*   **Telegram**: `https://api.telegram.org/bot<TOKEN>/setWebhook?url=<URL_RENDER>/webhook/telegram`
+*   **PayOS**: Truy cập trang My PayOS và điền Webhook: `<URL_RENDER>/webhook/payos`
 
 ---
 
-## 🚀 Hướng Dẫn Kéo Lên Server Đám Mây (Render)
+## 🔨 Công Nghệ Sử Dụng
+*   **FastAPI**: Framework hiệu năng cao xử lý API bất đồng bộ (Async).
+*   **OpenAI GPT-4o**: Phân tích ngữ nghĩa khách hàng chuyên sâu.
+*   **PayOS SDK**: Tích hợp thanh toán ngân hàng mở (VietQR).
+*   **PostgreSQL**: Cơ sở dữ liệu quan hệ bảo đảm toàn vẹn dữ liệu.
+*   **Docker**: Đảm bảo ứng dụng chạy đồng nhất trên mọi môi trường server.
 
-Hệ thống được thiết kế theo cấu trúc Containerize nên việc đưa lên bất kỳ hãng Cloud nào cũng rất đơn giản:
-
-1. Thiết lập CSDL thực tế: Đăng ký [Neon.tech](https://neon.tech), tạo kho dữ liệu Postgres và lấy dải Connection thay vào `DATABASE_URL` trong biến môi trường (Lưu ý luôn nối thêm `?sslmode=require` ở đuôi).
-2. Tải toàn bộ Source code này lên 1 kho chứa GitHub.
-3. Vào dịch vụ [Render](https://render.com), khởi tạo **New Web Service**, kết nối với GitHub. Ở mục `Runtime` buộc phải chọn là **Docker**.
-4. Truy cập Web Render, gắn lại các tham số `.env` vào phần Variables. Chờ màn hình Deploy báo `Live`!
-5. **Gắn Webhook**: Lấy đường Domain mà Render vừa cấp phát để nạp lại vào cài đặt Webhook của *Telegram BotFather* (Endpoint: `/webhook/telegram`) và Cài đặt *Dashboard PayOS* (Endpoint: `/webhook/payos`).
-
-✨ _Chúc bạn một ngày tràn đầy năng lượng cùng Casso AI Bot!_
+---
+**Ứng viên thực hiện:** Nguyễn Phan Việt Anh
