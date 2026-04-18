@@ -1,9 +1,10 @@
 # 🧋 Casso AI Bot - Trợ Lý Ảo Tiệm Trà Sữa Tự Động Hóa (Production Ready)
 
 Dự án này là một **AI Agent** đóng vai "Cô chủ quán" trên Telegram, tích hợp cổng thanh toán trực tuyến và hệ thống quản trị đơn hàng thời gian thực. Giải pháp được thiết kế hướng tới sự chuyên nghiệp, ổn định với khả năng triển khai tức thì trên nền tảng đám mây.
+---
 
-*Link bot Telegram: https://web.telegram.org/a/#8701359518
-*Link dashboard: https://casso-ai-bot.onrender.com
+1. Link bot Telegram: https://web.telegram.org/a/#8701359518
+2. Link dashboard: https://casso-ai-bot.onrender.com
 ---
 
 ## 🕵️ Hướng Dẫn Testing Cho Ban Giám Khảo (Trải Nghiệm 100% Tự Động)
