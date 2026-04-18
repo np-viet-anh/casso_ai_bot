@@ -8,7 +8,7 @@ Dự án này là một **AI Agent** đóng vai "Cô chủ quán" trên Telegram
 
 Để đánh giá trọn vẹn sức mạnh của hệ thống, BGK vui lòng thực hiện chu trình kiểm thử sau:
 
-1. **Bước 1 (Giao Tiếp AI)**: Truy cập Bot Telegram - gõ username `@trasuadee_bot` vào thanh tìm kiếm trên Telegram hoặc click vào link sau: [`https://web.telegram.org/a/#8701359518`](https://web.telegram.org/a/#8701359518), sau đó nhắn tin gọi món bằng ngôn ngữ tự nhiên theo kịch bản:
+1. **Bước 1 (Giao Tiếp AI)**: Truy cập Bot Telegram - gõ username `@trasuadee_bot` vào thanh tìm kiếm trên Telegram (tên bot là: Thư Ký Trà Sữa) hoặc click vào link sau: [`https://web.telegram.org/a/#8701359518`](https://web.telegram.org/a/#8701359518), sau đó nhắn tin gọi món bằng ngôn ngữ tự nhiên theo kịch bản:
 
 > **Khách hàng:** Cho con gọi món
 > 
