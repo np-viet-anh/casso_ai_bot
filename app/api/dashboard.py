@@ -37,9 +37,18 @@ async def ship_order(order_code: int, db: Session = Depends(get_db)):
         
         # Nhắc Bot gửi Telegram báo khách hàng
         chat_id = order.chat_id
-        text = f"🛵 Alo con ơi! Đơn hàng #{order_code} của con đã làm xong và đang được giao nhé! Cầm điện thoại ra lấy trà sữa nha!"
+        text = f"🛵 Alo con ơi! Đơn hàng #{order_code} của con đã làm xong và đang được giao nhé! Cầm điện thoại ra lấy đồ uống nha!"
         bot_service.send_message(chat_id, text)
         
         return {"status": "success", "message": "Đã đổi trạng thái sang DELIVERED và báo tin Teleram."}
         
     return {"status": "error", "message": "Không tìm thấy đơn hàng hoặc đơn chưa thanh toán!"}
+
+@router.post("/dashboard/cleanup")
+async def cleanup_orders(db: Session = Depends(get_db)):
+    """
+    Xóa toàn bộ dữ liệu DB (Hỗ trợ dọn rác lúc Test)
+    """
+    db.query(Order).delete()
+    db.commit()
+    return {"status": "success", "message": "Đã làm sạch database."}
