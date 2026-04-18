@@ -10,7 +10,7 @@ if settings.database_url.startswith("sqlite"):
 # Đối với PostgreSQL (như Neon), SQLAlchemy tự xử lý việc pool connections
 engine = create_engine(settings.database_url, **engine_args)
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, expire_on_commit=False)
 
 Base = declarative_base()
 
